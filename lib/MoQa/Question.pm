@@ -12,7 +12,7 @@ sub ask {
   }else{
       #$self->render(template => 'user/login');
       $self->flash(message => '请先登录');
-      $self->flash(referer => 'user/login');
+      $self->flash(referer => 'ask');
       $self->redirect_to('user/login');
   }
 }

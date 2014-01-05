@@ -1,0 +1,10 @@
+<h1>Ask a new question</h1>
+<div>
+    <form method="POST" action="<%== url_for "question/save"; %>">
+        <label>Title</label><input type="text" name="title" /> <br />
+        <label>Content</label><textarea name="content"></textarea><br />
+        <label>Tag</label><input type="text" name="tag" />
+        <input type="submit" value="Save" name="submit" />
+    </form>
+</div>
+

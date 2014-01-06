@@ -1,7 +1,14 @@
 package MoQa;
+
 use Mojo::Base 'Mojolicious';
+use DBI;
 
 # This method will run once at server start
+#
+#connect to db
+#
+our $DB = "";
+
 sub startup {
   my $self = shift;
 
@@ -12,9 +19,10 @@ sub startup {
   my $r = $self->routes;
 
   # Normal route to controller
-  $r->get('/')->to('example#welcome');
+  $r->get('/')->to('question#front');
 
   $r->get('/ask')->to('question#ask');
+  $r->post('/question/save')->to('question#save');
 
   $r->get('/user')->to('user#page'); # user's personal page
 

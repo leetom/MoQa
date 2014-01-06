@@ -1,5 +1,6 @@
 package MoQa::Question;
 use Mojo::Base 'Mojolicious::Controller';
+use Mojo::Util qw(url_escape url_unescape);
 
 use Data::Dumper;
 
@@ -20,7 +21,24 @@ sub ask {
 sub save {
     my $self = shift;
 
+    my $title = $self->param('title');
+    my $content = $self->param('content');
+    my $tag = $self->param('tag');
+
+    $self->render( text => url_escape($title . $content . $tag));
+
 }
+
+sub list {
+
+}
+
+sub front {
+    my $self = shift;
+
+    $self->render( text => "good");
+}
+
 
 
 

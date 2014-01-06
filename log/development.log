@@ -1745,3 +1745,200 @@ Compilation failed in require at (eval 247) line 1.
 [Sun Jan  5 19:37:40 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
 [Sun Jan  5 19:37:40 2014] [debug] Rendering cached template "question/ask.html.ep".
 [Sun Jan  5 19:37:40 2014] [debug] 200 OK (0.001171s, 853.971/s).
+[Mon Jan  6 13:20:54 2014] [info] Listening at "http://*:3000".
+[Mon Jan  6 13:20:57 2014] [debug] Your secret passphrase needs to be changed!!!
+[Mon Jan  6 13:20:57 2014] [debug] GET "/ask".
+[Mon Jan  6 13:20:57 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
+[Mon Jan  6 13:20:57 2014] [debug] 302 Found (0.002497s, 400.481/s).
+[Mon Jan  6 13:20:57 2014] [debug] GET "/user/login".
+[Mon Jan  6 13:20:57 2014] [debug] Routing to controller "MoQa::User" and action "login".
+[Mon Jan  6 13:20:57 2014] [debug] Rendering template "user/login.html.ep".
+[Mon Jan  6 13:20:57 2014] [debug] Rendering template "layouts/default.html.ep".
+[Mon Jan  6 13:20:57 2014] [debug] 200 OK (0.021712s, 46.057/s).
+[Mon Jan  6 13:21:01 2014] [debug] POST "/user/login".
+[Mon Jan  6 13:21:01 2014] [debug] Routing to controller "MoQa::User" and action "check".
+[Mon Jan  6 13:21:01 2014] [debug] 302 Found (0.002398s, 417.014/s).
+[Mon Jan  6 13:21:01 2014] [debug] GET "/ask".
+[Mon Jan  6 13:21:01 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
+[Mon Jan  6 13:21:01 2014] [debug] Rendering template "question/ask.html.ep".
+[Mon Jan  6 13:21:01 2014] [debug] 200 OK (0.005947s, 168.152/s).
+[Mon Jan  6 13:23:27 2014] [debug] GET "/ask".
+[Mon Jan  6 13:23:27 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
+[Mon Jan  6 13:23:27 2014] [debug] Rendering cached template "question/ask.html.ep".
+[Mon Jan  6 13:23:27 2014] [debug] 200 OK (0.001832s, 545.852/s).
+[Mon Jan  6 13:23:32 2014] [debug] GET "/".
+[Mon Jan  6 13:23:32 2014] [debug] Routing to controller "MoQa::Example" and action "welcome".
+[Mon Jan  6 13:23:32 2014] [debug] Rendering template "example/welcome.html.ep".
+[Mon Jan  6 13:23:32 2014] [debug] Rendering template "layouts/default.html.ep".
+[Mon Jan  6 13:23:32 2014] [debug] 200 OK (0.008644s, 115.687/s).
+[Mon Jan  6 13:27:47 2014] [debug] GET "/".
+[Mon Jan  6 13:27:47 2014] [debug] Routing to controller "MoQa::Example" and action "welcome".
+[Mon Jan  6 13:27:47 2014] [debug] Rendering cached template "example/welcome.html.ep".
+[Mon Jan  6 13:27:47 2014] [debug] Rendering cached template "layouts/default.html.ep".
+[Mon Jan  6 13:27:47 2014] [debug] 200 OK (0.003048s, 328.084/s).
+[Mon Jan  6 13:30:31 2014] [debug] GET "/".
+[Mon Jan  6 13:30:31 2014] [debug] Routing to controller "MoQa::Example" and action "welcome".
+[Mon Jan  6 13:30:31 2014] [debug] Rendering cached template "example/welcome.html.ep".
+[Mon Jan  6 13:30:31 2014] [debug] Rendering cached template "layouts/default.html.ep".
+[Mon Jan  6 13:30:31 2014] [debug] 200 OK (0.002198s, 454.959/s).
+[Mon Jan  6 13:32:13 2014] [debug] Your secret passphrase needs to be changed!!!
+[Mon Jan  6 13:32:13 2014] [debug] GET "/".
+[Mon Jan  6 13:32:13 2014] [debug] Routing to controller "MoQa::Question" and action "front".
+[Mon Jan  6 13:32:13 2014] [debug] 200 OK (0.002336s, 428.082/s).
+[Mon Jan  6 13:32:14 2014] [debug] GET "/".
+[Mon Jan  6 13:32:14 2014] [debug] Routing to controller "MoQa::Question" and action "front".
+[Mon Jan  6 13:32:14 2014] [debug] 200 OK (0.000980s, 1020.408/s).
+[Mon Jan  6 13:32:14 2014] [debug] GET "/".
+[Mon Jan  6 13:32:14 2014] [debug] Routing to controller "MoQa::Question" and action "front".
+[Mon Jan  6 13:32:14 2014] [debug] 200 OK (0.000696s, 1436.782/s).
+[Mon Jan  6 13:45:06 2014] [debug] Your secret passphrase needs to be changed!!!
+[Mon Jan  6 13:45:06 2014] [debug] GET "/ask".
+[Mon Jan  6 13:45:06 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
+[Mon Jan  6 13:45:06 2014] [debug] Rendering template "question/ask.html.ep".
+[Mon Jan  6 13:45:06 2014] [debug] 200 OK (0.008072s, 123.885/s).
+[Mon Jan  6 13:45:08 2014] [debug] GET "/".
+[Mon Jan  6 13:45:08 2014] [debug] Routing to controller "MoQa::Question" and action "front".
+[Mon Jan  6 13:45:08 2014] [debug] 200 OK (0.001610s, 621.118/s).
+[Mon Jan  6 15:02:57 2014] [info] Listening at "http://*:3000".
+[Mon Jan  6 15:03:26 2014] [debug] Your secret passphrase needs to be changed!!!
+[Mon Jan  6 15:03:26 2014] [debug] GET "/".
+[Mon Jan  6 15:03:26 2014] [debug] Routing to controller "MoQa::Question" and action "front".
+[Mon Jan  6 15:03:26 2014] [debug] 200 OK (0.002339s, 427.533/s).
+[Mon Jan  6 15:03:28 2014] [debug] GET "/ask".
+[Mon Jan  6 15:03:28 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
+[Mon Jan  6 15:03:28 2014] [debug] 302 Found (0.002136s, 468.165/s).
+[Mon Jan  6 15:03:28 2014] [debug] GET "/user/login".
+[Mon Jan  6 15:03:28 2014] [debug] Routing to controller "MoQa::User" and action "login".
+[Mon Jan  6 15:03:28 2014] [debug] Rendering template "user/login.html.ep".
+[Mon Jan  6 15:03:28 2014] [debug] Rendering template "layouts/default.html.ep".
+[Mon Jan  6 15:03:28 2014] [debug] 200 OK (0.023801s, 42.015/s).
+[Mon Jan  6 15:03:34 2014] [debug] POST "/user/login".
+[Mon Jan  6 15:03:34 2014] [debug] Routing to controller "MoQa::User" and action "check".
+[Mon Jan  6 15:03:34 2014] [debug] 302 Found (0.002450s, 408.163/s).
+[Mon Jan  6 15:03:34 2014] [debug] GET "/ask".
+[Mon Jan  6 15:03:34 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
+[Mon Jan  6 15:03:34 2014] [debug] Rendering template "question/ask.html.ep".
+[Mon Jan  6 15:03:34 2014] [debug] 200 OK (0.006997s, 142.918/s).
+[Mon Jan  6 15:03:39 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:03:39 2014] [debug] Template "not_found.development.html.ep" not found.
+[Mon Jan  6 15:03:39 2014] [debug] Template "not_found.html.ep" not found.
+[Mon Jan  6 15:03:39 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:03:39 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:03:39 2014] [debug] 404 Not Found (0.022489s, 44.466/s).
+[Mon Jan  6 15:04:43 2014] [debug] Your secret passphrase needs to be changed!!!
+[Mon Jan  6 15:04:43 2014] [debug] GET "/question/save".
+[Mon Jan  6 15:04:43 2014] [debug] Routing to controller "MoQa::Question" and action "save".
+[Mon Jan  6 15:04:43 2014] [debug] 200 OK (0.002392s, 418.060/s).
+[Mon Jan  6 15:04:47 2014] [debug] GET "/ask".
+[Mon Jan  6 15:04:47 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
+[Mon Jan  6 15:04:47 2014] [debug] Rendering template "question/ask.html.ep".
+[Mon Jan  6 15:04:47 2014] [debug] 200 OK (0.003451s, 289.771/s).
+[Mon Jan  6 15:04:53 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:04:53 2014] [debug] Template "not_found.development.html.ep" not found.
+[Mon Jan  6 15:04:53 2014] [debug] Template "not_found.html.ep" not found.
+[Mon Jan  6 15:04:53 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:04:53 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:04:53 2014] [debug] 404 Not Found (0.020218s, 49.461/s).
+[Mon Jan  6 15:05:06 2014] [debug] Your secret passphrase needs to be changed!!!
+[Mon Jan  6 15:05:06 2014] [debug] GET "/question/save".
+[Mon Jan  6 15:05:06 2014] [debug] Template "not_found.development.html.ep" not found.
+[Mon Jan  6 15:05:06 2014] [debug] Template "not_found.html.ep" not found.
+[Mon Jan  6 15:05:06 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:05:06 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:05:07 2014] [debug] 404 Not Found (0.019283s, 51.859/s).
+[Mon Jan  6 15:05:10 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:05:10 2014] [debug] Routing to controller "MoQa::Question" and action "save".
+[Mon Jan  6 15:05:10 2014] [debug] 200 OK (0.001775s, 563.380/s).
+[Mon Jan  6 15:05:14 2014] [debug] GET "/ask".
+[Mon Jan  6 15:05:14 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
+[Mon Jan  6 15:05:14 2014] [debug] Rendering template "question/ask.html.ep".
+[Mon Jan  6 15:05:14 2014] [debug] 200 OK (0.003869s, 258.465/s).
+[Mon Jan  6 15:05:28 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:05:28 2014] [debug] Routing to controller "MoQa::Question" and action "save".
+[Mon Jan  6 15:05:28 2014] [debug] 200 OK (0.001196s, 836.120/s).
+[Mon Jan  6 15:05:33 2014] [debug] GET "/ask".
+[Mon Jan  6 15:05:33 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
+[Mon Jan  6 15:05:33 2014] [debug] Rendering cached template "question/ask.html.ep".
+[Mon Jan  6 15:05:33 2014] [debug] 200 OK (0.001830s, 546.448/s).
+[Mon Jan  6 15:05:44 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:05:44 2014] [debug] Routing to controller "MoQa::Question" and action "save".
+[Mon Jan  6 15:05:44 2014] [debug] 200 OK (0.001153s, 867.303/s).
+[Mon Jan  6 15:05:47 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:05:47 2014] [debug] Routing to controller "MoQa::Question" and action "save".
+[Mon Jan  6 15:05:47 2014] [debug] 200 OK (0.001142s, 875.657/s).
+[Mon Jan  6 15:11:56 2014] [debug] Your secret passphrase needs to be changed!!!
+[Mon Jan  6 15:11:56 2014] [debug] GET "/ask".
+[Mon Jan  6 15:11:56 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
+[Mon Jan  6 15:11:56 2014] [debug] Rendering template "question/ask.html.ep".
+[Mon Jan  6 15:11:56 2014] [debug] 200 OK (0.006814s, 146.757/s).
+[Mon Jan  6 15:11:57 2014] [debug] GET "/ask".
+[Mon Jan  6 15:11:57 2014] [debug] Routing to controller "MoQa::Question" and action "ask".
+[Mon Jan  6 15:11:57 2014] [debug] Rendering cached template "question/ask.html.ep".
+[Mon Jan  6 15:11:57 2014] [debug] 200 OK (0.001930s, 518.135/s).
+[Mon Jan  6 15:12:10 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:12:10 2014] [debug] Routing to controller "MoQa::Question" and action "save".
+[Mon Jan  6 15:12:10 2014] [debug] 200 OK (0.001215s, 823.045/s).
+[Mon Jan  6 15:12:13 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:12:13 2014] [debug] Routing to controller "MoQa::Question" and action "save".
+[Mon Jan  6 15:12:13 2014] [debug] 200 OK (0.001798s, 556.174/s).
+[Mon Jan  6 15:12:28 2014] [debug] GET "/question/save".
+[Mon Jan  6 15:12:28 2014] [debug] Template "not_found.development.html.ep" not found.
+[Mon Jan  6 15:12:28 2014] [debug] Template "not_found.html.ep" not found.
+[Mon Jan  6 15:12:28 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:12:28 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:12:28 2014] [debug] 404 Not Found (0.017923s, 55.794/s).
+[Mon Jan  6 15:12:38 2014] [debug] Your secret passphrase needs to be changed!!!
+[Mon Jan  6 15:12:38 2014] [debug] GET "/question/save".
+[Mon Jan  6 15:12:38 2014] [debug] Template "not_found.development.html.ep" not found.
+[Mon Jan  6 15:12:38 2014] [debug] Template "not_found.html.ep" not found.
+[Mon Jan  6 15:12:38 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:12:38 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:12:38 2014] [debug] 404 Not Found (0.018939s, 52.801/s).
+[Mon Jan  6 15:12:42 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:12:42 2014] [debug] Routing to controller "MoQa::Question" and action "save".
+[Mon Jan  6 15:12:42 2014] [debug] Template "question/save.html.ep" not found.
+[Mon Jan  6 15:12:42 2014] [debug] Template "not_found.development.html.ep" not found.
+[Mon Jan  6 15:12:42 2014] [debug] Template "not_found.html.ep" not found.
+[Mon Jan  6 15:12:42 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:12:42 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:12:42 2014] [debug] 404 Not Found (0.020653s, 48.419/s).
+[Mon Jan  6 15:13:00 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:13:00 2014] [debug] Routing to controller "MoQa::Question" and action "save".
+[Mon Jan  6 15:13:00 2014] [debug] Template "question/save.html.ep" not found.
+[Mon Jan  6 15:13:00 2014] [debug] Template "not_found.development.html.ep" not found.
+[Mon Jan  6 15:13:00 2014] [debug] Template "not_found.html.ep" not found.
+[Mon Jan  6 15:13:00 2014] [debug] Rendering cached inline template.
+[Mon Jan  6 15:13:00 2014] [debug] Rendering cached inline template.
+[Mon Jan  6 15:13:00 2014] [debug] 404 Not Found (0.008541s, 117.082/s).
+[Mon Jan  6 15:13:09 2014] [debug] GET "/question/save".
+[Mon Jan  6 15:13:09 2014] [debug] Template "not_found.development.html.ep" not found.
+[Mon Jan  6 15:13:09 2014] [debug] Template "not_found.html.ep" not found.
+[Mon Jan  6 15:13:09 2014] [debug] Rendering cached inline template.
+[Mon Jan  6 15:13:09 2014] [debug] Rendering cached inline template.
+[Mon Jan  6 15:13:09 2014] [debug] 404 Not Found (0.010398s, 96.172/s).
+[Mon Jan  6 15:13:12 2014] [debug] Your secret passphrase needs to be changed!!!
+[Mon Jan  6 15:13:12 2014] [debug] GET "/question/save".
+[Mon Jan  6 15:13:12 2014] [debug] Template "not_found.development.html.ep" not found.
+[Mon Jan  6 15:13:12 2014] [debug] Template "not_found.html.ep" not found.
+[Mon Jan  6 15:13:12 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:13:12 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:13:12 2014] [debug] 404 Not Found (0.017839s, 56.057/s).
+[Mon Jan  6 15:13:21 2014] [debug] Your secret passphrase needs to be changed!!!
+[Mon Jan  6 15:13:21 2014] [debug] GET "/question/save".
+[Mon Jan  6 15:13:21 2014] [debug] Template "not_found.development.html.ep" not found.
+[Mon Jan  6 15:13:21 2014] [debug] Template "not_found.html.ep" not found.
+[Mon Jan  6 15:13:21 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:13:21 2014] [debug] Rendering inline template.
+[Mon Jan  6 15:13:21 2014] [debug] 404 Not Found (0.017885s, 55.913/s).
+[Mon Jan  6 15:13:23 2014] [debug] GET "/question/save".
+[Mon Jan  6 15:13:23 2014] [debug] Template "not_found.development.html.ep" not found.
+[Mon Jan  6 15:13:23 2014] [debug] Template "not_found.html.ep" not found.
+[Mon Jan  6 15:13:23 2014] [debug] Rendering cached inline template.
+[Mon Jan  6 15:13:23 2014] [debug] Rendering cached inline template.
+[Mon Jan  6 15:13:23 2014] [debug] 404 Not Found (0.014687s, 68.087/s).
+[Mon Jan  6 15:13:26 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:13:26 2014] [debug] Routing to controller "MoQa::Question" and action "save".
+[Mon Jan  6 15:13:26 2014] [debug] 200 OK (0.004341s, 230.362/s).
+[Mon Jan  6 15:13:27 2014] [debug] POST "/question/save".
+[Mon Jan  6 15:13:27 2014] [debug] Routing to controller "MoQa::Question" and action "save".
+[Mon Jan  6 15:13:27 2014] [debug] 200 OK (0.000758s, 1319.261/s).

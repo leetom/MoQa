@@ -7,7 +7,10 @@ use DBI;
 #
 #connect to db
 #
-our $DB = "";
+our $DB = DBI->connect("DBI:mysql:database=moqa;host=localhost", "root", "1991n0405", 
+    {'RaiseError' => 1}
+);
+
 
 sub startup {
   my $self = shift;

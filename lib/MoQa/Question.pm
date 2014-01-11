@@ -3,6 +3,10 @@ use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_escape url_unescape);
 
 use Data::Dumper;
+use DateTime;
+
+my $DB = $MoQa::DB;
+
 
 # This action will render a template
 sub ask {
@@ -24,6 +28,9 @@ sub save {
     my $title = $self->param('title');
     my $content = $self->param('content');
     my $tag = $self->param('tag');
+
+
+    $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW());", undef, $title, 1, $content) or die $DB::errstr;
 
     $self->render( text => url_escape($title . $content . $tag));
 

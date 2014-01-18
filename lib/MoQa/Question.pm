@@ -42,8 +42,10 @@ sub list {
 
 sub front {
     my $self = shift;
+    my $sth = $DB->prepare("SELECT * from question limit 20");
+    my $questions = $DB->selectall_arrayref($sth, { Slice => {} });
 
-    $self->render( text => "good");
+    $self->render(questions => $questions);
 }
 
 

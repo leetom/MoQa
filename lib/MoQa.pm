@@ -7,7 +7,9 @@ use DBI;
 #
 #connect to db
 #
-our $DB = DBI->connect("DBI:mysql:database=moqa;host=localhost", "root", "1991n0405", 
+my $pass = `mypass`;
+print $pass;
+our $DB = DBI->connect("DBI:mysql:database=moqa;host=localhost", "root", $pass, 
     {'RaiseError' => 1}
 );
 

@@ -1,6 +1,6 @@
 package MoQa::Question;
 use Mojo::Base 'Mojolicious::Controller';
-use Mojo::Util qw(url_escape url_unescape);
+use Mojo::Util qw(url_escape url_unescape html_escape);
 
 use Data::Dumper;
 use DateTime;

@@ -35,6 +35,9 @@ sub startup {
   $r->post('/user/login')->to('user#check');
 
   $r->get('/user/logout')->to('user#logout');
+
+
+  $r->get('/admin/init')->to('admin#init');
 }
 
 1;

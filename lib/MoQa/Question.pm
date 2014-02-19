@@ -4,6 +4,7 @@ use Mojo::Util qw(url_escape url_unescape html_escape);
 
 use Data::Dumper;
 use DateTime;
+#use utf8;
 
 my $DB = $MoQa::DB;
 
@@ -36,16 +37,26 @@ sub save {
 
 }
 
+sub update {
+    my $self = shift;
+
+    $self->render( text => "updated!");
+}
+
 sub list {
 
 }
+
 
 sub front {
     my $self = shift;
     my $sth = $DB->prepare("SELECT * from question limit 20");
     my $questions = $DB->selectall_arrayref($sth, { Slice => {} });
 
-    $self->render(questions => $questions);
+    
+    $self->res->headers->add("Power" => "MoQa");
+    $self->res->headers->add("Content-type" => "text/html;Charset=utf-8");
+    $self->render(questions => $questions, test => "THI这个很不错");
 }
 
 

@@ -4,6 +4,8 @@ use Mojo::Base 'Mojolicious::Controller';
 use Data::Dumper;
 use Digest::MD5 qw(md5_hex);
 
+my $DB = $MoQa::DB;
+
 # This action will render a template
 sub login {
   my $self = shift;
@@ -19,7 +21,20 @@ sub login {
 sub _check_user{
     my ($name, $pass) = @_;
 
-    return 1;
+
+    my $secret = md5_hex($pass);
+    say $name . $secret;
+
+    my $sth = $DB->prepare("SELECT COUNT(*) FROM user WHERE name=? and pass=?");
+
+    $sth->execute($name, $secret);
+    my @row = $sth->fetchrow_array;
+
+
+    if($row[0] > 0){ # 查找出来有此用户
+        return 1;
+    }
+    0;
 }
 
 sub check {
@@ -50,6 +65,18 @@ sub logout {
 
   $self->redirect_to('/');
 }
+
+sub reg {
+    my $self = shift;
+
+    $self->render();
+}
+
+sub save {
+    my $self = shift;
+    $self->render();
+}
+
 
 sub page {
     my $self = shift;

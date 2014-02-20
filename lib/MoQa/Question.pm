@@ -2,7 +2,8 @@ package MoQa::Question;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_escape url_unescape html_unescape);
 
-use Data::Dumper;
+# use Data::Dumper;
+use Data::Printer;
 #use DateTime;
 use utf8;
 use Encode;
@@ -34,7 +35,7 @@ sub save {
 
     $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW());", undef, $title, 1, $content) or die $DB::errstr;
 
-    $self->render( text => url_escape($title . $content . $tag));
+    $self->render( text => $title . $content . $tag);
 
 }
 
@@ -59,6 +60,7 @@ sub front {
     $self->res->headers->add("Power" => "MoQa");
     $self->res->headers->add("Content-type" => "text/html;Charset=utf-8");
     
+    p $questions;
     $self->stash(questions => $questions);
 
     $self->render();

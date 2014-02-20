@@ -7,6 +7,6 @@
         <div><%= $question->{title} %></div>
         <div>Created by: <%= $question->{name} %></div>
         <div>Created on: <%= $question->{created} %></div>
-        <div><%= $question->{content} %></div>
+        <div><%== $question->{content} %></div>
     </div>
 %}

@@ -153,7 +153,11 @@ sub save {
 
 sub page {
     my $self = shift;
-    $self->render(text => "hello, " . $self->session('user'));
+    if($self->session('user')){
+        $self->render(text => "hello, " . $self->session('user'));
+    }else{
+        $self->redirect_to('user/login');
+    }
 }
 
 1;

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.34, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: moqa
 -- ------------------------------------------------------
--- Server version	5.5.34-0ubuntu0.13.10.1
+-- Server version	5.5.35-0ubuntu0.13.10.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,7 +39,7 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (7,'test',1,'good','0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'test',1,'good','2014-01-07 09:38:04','2014-01-07 09:38:04'),(9,'godo',1,'问题','2014-01-24 08:29:44','2014-01-24 08:29:44');
+INSERT INTO `question` VALUES (7,'test',1,'good','0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'test',1,'good','2014-01-07 09:38:04','2014-01-07 09:38:04'),(9,'godo',0,'问题','2014-01-24 08:29:44','2014-01-24 08:29:44');
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,8 +55,9 @@ CREATE TABLE `user` (
   `name` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +66,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'leetom','202cb962ac59075b964b07152d234b70','');
+INSERT INTO `user` VALUES (1,'leetom','202cb962ac59075b964b07152d234b70','','0000-00-00 00:00:00'),(2,'test','098f6bcd4621d373cade4e832627b4f6','','0000-00-00 00:00:00'),(3,'tt','912ec803b2ce49e4a541068d495ab570','tgest@test.cn','2014-02-20 12:18:13');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -78,4 +79,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-19 21:02:40
+-- Dump completed on 2014-02-20 20:20:27

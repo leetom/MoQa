@@ -4,7 +4,8 @@ use Mojo::Util qw(url_escape url_unescape html_unescape);
 
 use Data::Dumper;
 #use DateTime;
-#use utf8;
+use utf8;
+use Encode;
 
 my $DB = $MoQa::DB;
 
@@ -50,14 +51,17 @@ sub list {
 
 sub front {
     my $self = shift;
-    my $sth = $DB->prepare("SELECT * from question limit 20");
+    # my $sth = $DB->prepare("SELECT q.*, u.name from question q, user u where q.uid = u.id limit 20");
+    my $sth = $DB->prepare("SELECT q.*, u.name from question q LEFT JOIN user u ON q.uid = u.id limit 20");
     my $questions = $DB->selectall_arrayref($sth, { Slice => {} });
 
 
-    
     $self->res->headers->add("Power" => "MoQa");
     $self->res->headers->add("Content-type" => "text/html;Charset=utf-8");
-    $self->render(questions => $questions, test => "THI这个很不错");
+    
+    $self->stash(questions => $questions);
+
+    $self->render();
 }
 
 

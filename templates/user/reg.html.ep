@@ -1,15 +1,23 @@
 % layout 'default';
 % title "注册";
+<style>
+#reg-form lable{
+    display:block;
+}
+</style>
 <div class="message"><%= flash 'message' %></div>
-<h1>login</h1>
 <div>
-    <form action="/user/reg" method="POST">
+    <form id="reg-form" action="/user/reg" method="POST">
         <input name="referer" type="hidden" value="<%= flash 'referer' %>" />
         <lable>用户名
             <input name="username" type="text" />
         </lable>
-        <lable>密码</lable>
-        <input name="password" type="password" />
+        <lable>邮箱
+            <input name="email" type="text" />
+        </lable>
+        <lable>密码
+            <input name="password" type="password" />
+        </lable>
         <input type="submit" value="注册" />
     </form>
 </div>

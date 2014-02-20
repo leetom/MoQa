@@ -1,4 +1,12 @@
 % layout 'default';
 % title 'New Questions';
-%== $questions->[2]->{content};
-%== $test;
+
+% for my $question (@$questions){
+    <div class="question">
+        <div><%= $question->{id} %></div>
+        <div><%= $question->{title} %></div>
+        <div>Created by: <%= $question->{name} %></div>
+        <div>Created on: <%= $question->{created} %></div>
+        <div><%= $question->{content} %></div>
+    </div>
+%}

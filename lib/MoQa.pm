@@ -9,10 +9,11 @@ use DBI;
 #
 my $pass = `mypass`;
 our $DB = DBI->connect("DBI:mysql:database=moqa;host=localhost", "root", $pass, 
-    {'RaiseError' => 1}
+    {'RaiseError' => 1, mysql_enable_utf8 => 1,}
 );
 
-$DB->do("SET CHARSET UTF8");
+$DB->do("SET CHARSET 'UTF8'");
+$DB->do("SET NAMES 'UTF8'");
 
 
 sub startup {

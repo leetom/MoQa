@@ -1,9 +1,9 @@
 package MoQa::Question;
 use Mojo::Base 'Mojolicious::Controller';
-use Mojo::Util qw(url_escape url_unescape html_escape);
+use Mojo::Util qw(url_escape url_unescape html_unescape);
 
 use Data::Dumper;
-use DateTime;
+#use DateTime;
 #use utf8;
 
 my $DB = $MoQa::DB;
@@ -52,6 +52,7 @@ sub front {
     my $self = shift;
     my $sth = $DB->prepare("SELECT * from question limit 20");
     my $questions = $DB->selectall_arrayref($sth, { Slice => {} });
+
 
     
     $self->res->headers->add("Power" => "MoQa");

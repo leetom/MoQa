@@ -1,4 +1,4 @@
 % layout 'default';
 % title 'New Questions';
-%== dumper $questions;
-%== dumper $test;
+%== $questions->[2]->{content};
+%== $test;

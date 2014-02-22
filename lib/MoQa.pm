@@ -38,6 +38,7 @@ sub startup {
 
   $r->get('/user/reg')->to('user#reg');
   $r->post('/user/reg')->to('user#save');
+  $r->get('/user/captcha')->to('user#captcha');
 
   $r->get('/user/logout')->to('user#logout');
 

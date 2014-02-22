@@ -32,8 +32,10 @@ sub save {
     my $content = $self->param('content');
     my $tag = $self->param('tag');
 
+    my $uid = $self->session('user')->{id};
 
-    $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW());", undef, $title, 1, $content) or die $DB::errstr;
+
+    $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW());", undef, $title, $uid, $content) or die $DB::errstr;
 
     $self->render( text => $title . $content . $tag);
 

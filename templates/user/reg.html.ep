@@ -18,6 +18,10 @@
         <lable>密码
             <input name="password" type="password" />
         </lable>
+        <lable>验证码
+            <input name="password" type="password" />
+            <img src="/user/captcha" />
+        </lable>
         <input type="submit" value="注册" />
     </form>
 </div>

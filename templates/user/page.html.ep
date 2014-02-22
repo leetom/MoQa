@@ -1,0 +1,8 @@
+% layout 'default';
+% title session('user')->{name};
+<style>
+</style>
+<div class="message"><%= flash 'message' %></div>
+<div>
+<%= dumper $questions;
+</div>

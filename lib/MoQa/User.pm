@@ -171,7 +171,7 @@ sub page {
 
         my $uid = $self->session('user')->{id};
 
-        my $sth = $DB->prepare('SELECT * from `question` where `uid`= ? LIMIT 20');
+        my $sth = $DB->prepare('SELECT q.*, u.name from `question` q LEFT JOIN `user` u ON q.uid = u.id where `uid`= ? LIMIT 20');
 
         p $uid;
 

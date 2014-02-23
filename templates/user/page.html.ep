@@ -4,5 +4,10 @@
 </style>
 <div class="message"><%= flash 'message' %></div>
 <div>
-<%= dumper $questions;
+<%= dumper $questions; %>
+% for my $question (@$questions){
+    <div><%= $question->{title} %></div>
+    <div><%= $question->{name} %></div>
+    <div><%= $question->{created} %></div>
+%  }
 </div>

@@ -1,7 +1,6 @@
 package MoQa::Question;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_escape url_unescape html_unescape);
-# use Data::Dumper;
 use Data::Printer;
 #use DateTime;
 
@@ -42,6 +41,24 @@ sub save {
     $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW());", undef, $title, $uid, $content) or die $DB::errstr;
 
     $self->render( text => $title . $content . $tag);
+
+}
+
+sub view {
+    my ($self) = @_;
+
+    my $id = $self->param('id');;
+
+    my $sth = $DB->prepare("SELECT q.*, u.name FROM `question` q LEFT JOIN `user` u ON q.uid=u.id WHERE q.id=?");
+    $sth->execute($id);
+
+    my $question = $sth->fetchrow_hashref;
+
+    $self->redirect_to('notfound') unless $question;
+
+    $self->stash(question => $question);
+
+    $self->render();
 
 }
 

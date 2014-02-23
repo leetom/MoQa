@@ -22,15 +22,16 @@ sub startup {
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer');
 
+  #验证码插件
   $self->plugin(
       'captcha',
       {
               session_name    => 'captcha_string',
               out                     => {force => 'jpeg'},
-              particle                => [200,0],
-              create                  => ["normal", "rect", "#cc0000"],
+              particle                => [200,0], #干扰粒子的密度
+              create                  => ["normal", "rect", "#cc0000"], #参数, 详见perldoc GD::SecurityImage
               new                     => {
-                  rnd_data        => [2..9, 'A'..'H', 'J'..'Z'],
+                  rnd_data        => [2..9, 'A'..'H', 'J'..'Z'], #选择的数字
                   width           => 80,
                   height          => 30,
                   lines           => 1,
@@ -48,6 +49,8 @@ sub startup {
   $r->get('/ask')->to('question#ask');
   $r->post('/question/save')->to('question#save');
 
+  $r->get('/question/:id' => [ id => qr/\d+$/ ])->to('question#view');
+
   $r->get('/user')->to('user#page'); # user's personal page
 
   $r->get('/user/login')->to('user#login');
@@ -61,6 +64,9 @@ sub startup {
 
 
   $r->get('/admin/init')->to('admin#init');
+
+  $r->get('/error/404')->name('notfound')->to('admin#error404');
+  $r->get('/error/403')->name('notallowed')->to('admin#error403');
 }
 
 1;

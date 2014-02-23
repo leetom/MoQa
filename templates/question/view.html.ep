@@ -1,0 +1,6 @@
+% layout 'default';
+% title $question->{title};
+<div class="message"><%= flash 'message' %></div>
+<div>
+    <%= dumper $question; %>
+</div>

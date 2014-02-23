@@ -1,11 +1,12 @@
 % layout 'default';
 % title "注册";
+% use Encode;
 <style>
 #reg-form lable{
     display:block;
 }
 </style>
-<div class="message"><%= flash 'message' %></div>
+<div class="message"><%= decode 'utf8', flash 'message' %></div> <%# 因为JSON encode的时候，已经进行utf8编码，在模板中又编码一次，所以要解码一次 %>
 <div>
     <form id="reg-form" action="/user/reg" method="POST">
         <input name="referer" type="hidden" value="<%= flash 'referer' %>" />
@@ -19,7 +20,7 @@
             <input name="password" type="password" />
         </lable>
         <lable>验证码
-            <input name="password" type="password" />
+            <input name="captcha" type="text" />
             <img src="/user/captcha" />
         </lable>
         <input type="submit" value="注册" />

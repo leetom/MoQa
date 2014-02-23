@@ -1,12 +1,10 @@
 package MoQa::Question;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_escape url_unescape html_unescape);
-
 # use Data::Dumper;
 use Data::Printer;
 #use DateTime;
-use utf8;
-use Encode;
+
 
 my $DB = $MoQa::DB;
 
@@ -34,6 +32,12 @@ sub save {
 
     my $uid = $self->session('user')->{id};
 
+    my $file = $self->param('file'); # Mojo::Upload object, 直接可以用了
+
+
+    p $file->move_to('./public/upload/' . $file->filename); # 注意路径的分隔符
+
+    
 
     $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW());", undef, $title, $uid, $content) or die $DB::errstr;
 

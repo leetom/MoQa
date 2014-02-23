@@ -3,6 +3,7 @@ use Mojo::Base 'Mojolicious::Controller';
 
 use Data::Printer;
 use Digest::MD5 qw(md5_hex);
+use Mojo::JSON qw(decode_json encode_json);
 
 my $DB = $MoQa::DB;
 
@@ -114,116 +115,52 @@ sub check_email{
 sub save {
     my $self = shift;
 
-    my $username = $self->param("username");
-    my $email = $self->param("email");
-    my $password = $self->param("password");
+    if($self->validate_captcha($self->param('captcha'))){ #验证码
+        my $username = $self->param("username");
+        my $email = $self->param("email");
+        my $password = $self->param("password");
 
-    my $check_name = $self->check_username($username);
-    my $check_email = $self->check_email($email);
+        my $check_name = $self->check_username($username);
+        my $check_email = $self->check_email($email);
 
-    my @message;
+        my @message;
 
-    if($check_name == 0){
-        #名字检查通过
+        if($check_name == 0){
+            #名字检查通过
+        }else{
+            push @message, $check_name;
+        }
+        if($check_email == 0){
+            #邮箱检查通过
+        }else{
+            push @message, $check_email;
+        }
+
+        if(@message  == 0){
+            #没有错误
+            eval{ $DB->do("INSERT INTO `user` (`name`, `pass`, `email`) VALUES (?, ?, ?);", 
+                    undef, # attributes, options. normally undef
+                    $username, md5_hex($password), $email); 
+            };
+
+            $self->render(text => "good");
+        }else{
+            #将错误信息flash到注册页面
+            $self->flash(message => encode_json(\@message));
+            $self->redirect_to("user/reg");
+        }
     }else{
-        push @message, $check_name;
-    }
-    if($check_email == 0){
-        #邮箱检查通过
-    }else{
-        push @message, $check_email;
-    }
-
-    if(@message  == 0){
-        #没有错误
-        eval{ $DB->do("INSERT INTO `user` (`name`, `pass`, `email`) VALUES (?, ?, ?);", 
-                undef, # attributes, options. normally undef
-                $username, md5_hex($password), $email); 
-        };
-
-        $self->render(text => "good");
-    }else{
-        p @message;
-        #将错误信息flash到注册页面
-        $self->flash(message => \@message);
-        $self->redirect_to("user/reg");
+        $self->render(text => '验证码错误');
     }
 }
 
-sub myrand { 
-    my $max = shift; 
-    my $result; 
-    my $randseed = $LBCGI::randseed ; 
-    $max ||= 1; 
-    eval("\$result = rand($max);"); 
-    return $result unless ($@); 
-    $randseed = time unless ($randseed); 
-    my $x = 0xffffffff; 
-    $x++; 
-    $randseed *= 134775813; 
-    $randseed++; 
-    $randseed %= $x; 
-    return $randseed * $max / $x; 
-} 
-
-sub captcha_img{
-    no strict "refs";
-    my $verifynum=shift; 
-    my @n0 = ("3c","66","66","66","66","66","66","66","66","3c"); 
-    my @n1 = ("1c","0c","0c","0c","0c","0c","0c","0c","1c","0c"); 
-    my @n2 = ("7e","60","60","30","18","0c","06","06","66","3c"); 
-    my @n3 = ("3c","66","06","06","06","1c","06","06","66","3c"); 
-    my @n4 = ("1e","0c","7e","4c","2c","2c","1c","1c","0c","0c"); 
-    my @n5 = ("3c","66","06","06","06","7c","60","60","60","7e"); 
-    my @n6 = ("3c","66","66","66","66","7c","60","60","30","1c"); 
-    my @n7 = ("30","30","18","18","0c","0c","06","06","66","7e"); 
-    my @n8 = ("3c","66","66","66","66","3c","66","66","66","3c"); 
-    my @n9 = ("38","0c","06","06","3e","66","66","66","66","3c"); 
-
-    for (my $i = 0; $i < 10; $i++){ 
-        for (1 .. 6){ 
-            my $a1 = substr("012", int(myrand(3)), 1) . substr("012345", int(myrand(6)), 1); 
-            my $a2 = substr("012345",int(myrand(6)),1) . substr("0123", int(myrand(4)), 1); 
-            int(myrand(2)) eq 1 ? push(@{"n$i"}, $a1) : unshift(@{"n$i"},$a1); 
-            int(myrand(2)) eq 0 ? push(@{"n$i"}, $a1) : unshift(@{"n$i"},$a2); 
-        } 
-    } 
-
-    my @bitmap = (); 
-
-    for (my $i = 0; $i < 20; $i++){ 
-        for (my $j = 0; $j < 4; $j++){ 
-            my $n = substr($verifynum, $j, 1); 
-            my $bytes = ${"n$n"}[$i]; 
-            my $a = int(myrand(15)); 
-            $a eq 1 ? $bytes =~ s/9/8/g : $a eq 3 ? $bytes =~ s/c/e/g : $a eq 6 ? $bytes =~ s/3/b/g : $a eq 8 ? $bytes =~ s/8/9/g : $a eq 0 ? $bytes =~ s/e/f/g : 1; 
-            push(@bitmap, $bytes); 
-        } 
-    } 
-    for (my $i = 0; $i < 8; $i++){ 
-        my $a = substr("012", int(myrand(3)), 1) . substr("012345", int(myrand(6)), 1); 
-        unshift(@bitmap, $a); 
-        push(@bitmap, $a); 
-    } 
-
-    my $image = '424d9e000000000000003e0000002800'; 
-    $image .= "00002000000018000000010001000000"; 
-    $image .= "00006000000000000000000000000000"; 
-    $image .= "00000000000000000000FFFFFF00"; 
-    $image .= join('', @bitmap); 
-    $image = pack ('H*', $image); 
-
-    return $image; 
-}
 
 sub captcha{
     my $self = shift;
 
-    $self->res->headers->add("Content-type" => "image/bmp");
+    $self->res->headers->add("Content-type" => "image/jpg");
 
-    my $image = captcha_img(0000); 
-
-    $self->render(data => $image);
+    $self->render(data => $self->create_captcha);
 }
 
 

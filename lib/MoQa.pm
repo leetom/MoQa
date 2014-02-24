@@ -40,6 +40,9 @@ sub startup {
       }
   );
 
+  #时间插件(自己写的)
+  $self->plugin('ReadableTime', {timezone => 'Asia/Shanghai'});
+
   # Router
   my $r = $self->routes;
 

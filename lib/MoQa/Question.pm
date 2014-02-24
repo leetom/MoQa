@@ -76,6 +76,7 @@ sub list {
 sub front {
     my $self = shift;
     # my $sth = $DB->prepare("SELECT q.*, u.name from question q, user u where q.uid = u.id limit 20");
+    # my $sth = $DB->prepare("SELECT q.*, UNIX_TIMESTAMP(q.created) stamp, u.name from question q LEFT JOIN user u ON q.uid = u.id ORDER BY id desc limit 20"); #UNIX_TIMESTAM 将mysql的日期时间格式改成UNIX_TIMESTAM的形式
     my $sth = $DB->prepare("SELECT q.*, u.name from question q LEFT JOIN user u ON q.uid = u.id ORDER BY id desc limit 20");
     my $questions = $DB->selectall_arrayref($sth, { Slice => {} });
 

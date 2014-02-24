@@ -44,12 +44,20 @@ sub startup {
   my $r = $self->routes;
 
   # Normal route to controller
-  $r->get('/')->to('question#front');
+  # main nav links
+  $r->get('/')->name('home')->to('question#front');
+  $r->get('/tags')->name('tags')->to('tag#all');
+  $r->get('/users')->name('users')->to('user#all');
+  $r->get('/badges')->name('badges')->to('badge#all');
 
   $r->get('/ask')->to('question#ask');
   $r->post('/question/save')->to('question#save');
 
+  #显示问题，by id
   $r->get('/question/:id' => [ id => qr/\d+$/ ])->to('question#view');
+  $r->get('/q/:id' => [ id => qr/\d+$/ ])->to('question#view');
+
+  # $r->get('/question/:name' => [ id => qr/\d+$/ ])->to('question#view'); #考虑要不要加这个
 
   $r->get('/user')->to('user#page'); # user's personal page
 

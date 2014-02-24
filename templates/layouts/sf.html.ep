@@ -1,0 +1,45 @@
+%layout 'default';
+%title 'MoQa' ;
+%= content header => begin
+  <header>
+      <div class="nav-bar-wrapper wrapper">
+            % my @links = qw(home tags users badges);
+            <nav class="nav-bar container">
+                % for my $link (@links){
+                    % if(current_route $link){
+                        <a href="<%= url_for $link %>" class="active">
+                            <%= ucfirst $link %>
+                        </a>
+                    % }else{
+                        <a href="<%= url_for $link %>">
+                            <%= ucfirst $link %>
+                        </a>
+                    % }
+                % }
+            </nav>
+      </div>
+  </header>
+% end
+
+%= content footer => begin
+  <footer>
+      <div class="footer-nav">
+        % my @links = qw(home tags users badges);
+          <nav>
+                % for my $link (@links){
+                    % if(current_route $link){
+                        <a href="<%= url_for $link %>" class="active">
+                            <%= ucfirst $link %>
+                        </a>
+                    % }else{
+                        <a href="<%= url_for $link %>">
+                            <%= ucfirst $link %>
+                        </a>
+                    % }
+                % }
+          </nav>
+      </div>
+      <p class="copy">Copyright&copy;MoQa 2014</p>
+  </footer>
+% end
+

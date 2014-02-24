@@ -1,12 +1,21 @@
-% layout 'default';
+% layout 'sf';
 % title 'New Questions';
+
+<article class="questions-front content">
+    <header>最新问题</header>
 
 % for my $question (@$questions){
     <div class="question">
-        <div><%= $question->{id} %></div>
-        <div><%= $question->{title} %></div>
-        <div>Created by: <%= $question->{name} %></div>
-        <div>Created on: <%= $question->{created} %></div>
-        <div><%== $question->{content} %></div>
+        <div class="question-action">顶踩</div>
+        <div class="question-body">
+            <div><%= $question->{id} %></div>
+            <div><%= $question->{title} %></div>
+            <div>Created by: <%= $question->{name} %></div>
+            <div>Created on: <%= $question->{created} %></div>
+            <div><%== $question->{content} %></div>
+        </div>
     </div>
 %}
+</article>
+<aside class="sidebar">
+</aside>

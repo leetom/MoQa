@@ -76,7 +76,7 @@ sub list {
 sub front {
     my $self = shift;
     # my $sth = $DB->prepare("SELECT q.*, u.name from question q, user u where q.uid = u.id limit 20");
-    my $sth = $DB->prepare("SELECT q.*, u.name from question q LEFT JOIN user u ON q.uid = u.id limit 20");
+    my $sth = $DB->prepare("SELECT q.*, u.name from question q LEFT JOIN user u ON q.uid = u.id ORDER BY id desc limit 20");
     my $questions = $DB->selectall_arrayref($sth, { Slice => {} });
 
 

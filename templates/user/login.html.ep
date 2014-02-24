@@ -1,4 +1,4 @@
-% layout 'default';
+% layout 'sf';
 % title "登录";
 <div class="message"><%= flash 'message' %></div>
 <h1>login</h1>

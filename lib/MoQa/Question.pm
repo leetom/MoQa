@@ -32,13 +32,13 @@ sub save {
     my $uid = $self->session('user')->{id};
 
     my $file = $self->param('file'); # Mojo::Upload object, 直接可以用了
-
-
-    p $file->move_to('./public/upload/' . $file->filename); # 注意路径的分隔符
+    if($file->filename and $file->size > 0){ #上传文件了
+        $file->move_to('./public/upload/' . $file->filename); # 注意路径的分隔符
+    }
 
     
 
-    $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW());", undef, $title, $uid, $content) or die $DB::errstr;
+    $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW(), NULL, NULL, NULL);", undef, $title, $uid, $content) or die $DB::errstr;
 
     $self->render( text => $title . $content . $tag);
 

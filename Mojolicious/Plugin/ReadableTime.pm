@@ -17,14 +17,12 @@ sub register {
             my $time = shift;
 
             my $dt = DateTime::Format::MySQL->parse_datetime($time);
-            my $now = DateTime->now();
-            $now->set_time_zone($tz);
             $dt->set_time_zone($tz);
 
-            #$app->log->debug($now->epoch);
+
             #$app->log->debug($dt->epoch);
             #
-            my $seconds = $now->epoch - $dt->epoch;
+            my $seconds = time() - $dt->epoch;
             use integer;
 
             if($seconds < 20){

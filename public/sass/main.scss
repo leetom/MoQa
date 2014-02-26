@@ -1,6 +1,13 @@
 $bgcolor: #ccc;
 $width: 1002px;
 $font: "微软雅黑","WenQuanYi Micro Hei","黑体","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+@mixin inlineblock($width: 50%) {
+    display:inline-block;
+    vertical-align:top;
+    width:$width;
+}
+
 body{
     background:$bgcolor;
     margin:0;
@@ -34,8 +41,12 @@ body{
     }
 }
 .content{
-    width:75%;
     background:#cca;
+    @include inlineblock(70%);
+    padding:20px 10px;
+}
+.sidebar{
+    @include inlineblock(20%);
 }
 
 .question{
@@ -45,6 +56,7 @@ body{
     }
 
 }
+
 
 //footer, html in sf.htmlep
 footer{

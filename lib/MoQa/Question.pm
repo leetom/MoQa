@@ -84,7 +84,7 @@ sub front {
     $self->res->headers->add("Power" => "MoQa");
     $self->res->headers->add("Content-type" => "text/html;Charset=utf-8");
     
-    p $questions;
+    # $self->readable_time($questions->[0]->{created});
     $self->stash(questions => $questions);
 
     $self->render();

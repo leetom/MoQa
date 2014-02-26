@@ -41,7 +41,7 @@ sub startup {
   );
 
   #时间插件(自己写的)
-  $self->plugin('ReadableTime', {timezone => 'Asia/Shanghai'});
+  $self->plugin('ReadableTime', {timezone => 'Asia/Shanghai', lang => 'cn'});
 
   # Router
   my $r = $self->routes;

@@ -10,7 +10,10 @@
         <div class="question-action">顶踩</div>
         <div class="question-body">
             <div><%= $question->{title} %></div>
-            <div><span class="author"><%= $question->{name} %> </span>created: <%= readable_time $question->{created} %></div>
+            <div>
+                <span class="author"><%= $question->{name} %> </span>
+                <span>created: <%= readable_time $question->{created} %></span>
+            </div>
         </div>
     </div>
 %}

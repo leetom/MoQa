@@ -2,10 +2,19 @@ package MoQa::Question;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_escape url_unescape html_unescape);
 use Data::Printer;
+use MoQa::Tag;
 #use DateTime;
 
 
 my $DB = $MoQa::DB;
+
+sub unique {
+    my $arf = shift;
+    my @array = @$arf;
+    my %count;
+    @array = grep { ! $count{$_} ++} @array;
+    return \@array;
+}
 
 
 # This action will render a template
@@ -36,12 +45,26 @@ sub save {
         $file->move_to('./public/upload/' . $file->filename); # 注意路径的分隔符
     }
 
-    
 
-    $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW(), NULL, NULL, NULL);", undef, $title, $uid, $content) or die $DB::errstr;
+    my @Tags;
+    if($tag){
+        my @tags = split /,|\s/, $tag;
+        @tags = @{unique(\@tags)};
+        for my $t (@tags){
+            push @Tags, MoQa::Tag->new($t);
+        }
+    }
 
-    $self->redirect_to('questionview', id => $DB->last_insert_id(undef, undef, undef, undef));
+    $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW(), 0, 0, 0);", undef, $title, $uid, $content) or die $DB::errstr;
+    my $qid = $DB->last_insert_id(undef, undef, undef, undef);
 
+    # relate question to all tags
+    my $sth = $DB->prepare("INSERT INTO `tagged` VALUES(NULL, ?, ?)");
+    for my $tag(@Tags){
+       $sth->execute($qid, $tag->{id});
+    }
+
+    $self->redirect_to('questionview', id => $qid);
 }
 
 sub view {

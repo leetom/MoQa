@@ -34,7 +34,7 @@ sub _check_user{
     p $row; # hash ref to the user.
 
     if($row){ # 查找出来有此用户
-        return $row ; #登录成功, 0为uid
+        return $row ; #登录成功 
     }
     0;
 }
@@ -173,14 +173,12 @@ sub page {
 
         my $sth = $DB->prepare('SELECT q.*, u.name from `question` q LEFT JOIN `user` u ON q.uid = u.id where `uid`= ? LIMIT 20');
 
-        p $uid;
 
         my $questions = $DB->selectall_arrayref($sth, { Slice => {} }, $uid);
 
         # while($row = $sth->fetchrow_hashref){ #也可以用 selectall_arrayref
         # }
         
-        p $questions;
         $self->render(questions => $questions);
     }else{
         $self->redirect_to('user/login');

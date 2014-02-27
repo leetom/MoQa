@@ -53,12 +53,12 @@ sub startup {
   $r->get('/users')->name('users')->to('user#all');
   $r->get('/badges')->name('badges')->to('badge#all');
 
-  $r->get('/ask')->to('question#ask');
-  $r->post('/question/save')->to('question#save');
+  $r->get('/ask')->name('questionask')->to('question#ask');
+  $r->post('/question/save')->name('questionsave')->to('question#save');
 
   #显示问题，by id
-  $r->get('/question/:id' => [ id => qr/\d+$/ ])->to('question#view');
-  $r->get('/q/:id' => [ id => qr/\d+$/ ])->to('question#view');
+  $r->get('/question/:id' => [ id => qr/\d+$/ ])->name('questionview')->to('question#view');
+  $r->get('/q/:id' => [ id => qr/\d+$/ ])->name('qview')->to('question#view');
 
   # $r->get('/question/:name' => [ id => qr/\d+$/ ])->to('question#view'); #考虑要不要加这个
 

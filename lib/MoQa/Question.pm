@@ -40,7 +40,7 @@ sub save {
 
     $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW(), NULL, NULL, NULL);", undef, $title, $uid, $content) or die $DB::errstr;
 
-    $self->render( text => $title . $content . $tag);
+    $self->redirect_to('questionview', id => $DB->last_insert_id(undef, undef, undef, undef));
 
 }
 
@@ -48,6 +48,8 @@ sub view {
     my ($self) = @_;
 
     my $id = $self->param('id');;
+
+    $DB->do("UPDATE `question` SET viewed = viewed+1 WHERE id=?", undef, $id) or warn "viewed更新失败: ". $DB::errstr;
 
     my $sth = $DB->prepare("SELECT q.*, u.name FROM `question` q LEFT JOIN `user` u ON q.uid=u.id WHERE q.id=?");
     $sth->execute($id);

@@ -29,8 +29,11 @@ CREATE TABLE `question` (
   `content` text,
   `created` timestamp NULL DEFAULT NULL,
   `updated` timestamp NULL DEFAULT NULL,
+  `viewed` int(11) DEFAULT '0',
+  `vote_up` int(11) DEFAULT '0',
+  `vote_down` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +42,7 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (7,'test',1,'good','0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'test',1,'good','2014-01-07 09:38:04','2014-01-07 09:38:04'),(9,'godo',0,'问题','2014-01-24 08:29:44','2014-01-24 08:29:44');
+INSERT INTO `question` VALUES (7,'test',1,'good','2014-02-25 11:52:11','2014-02-25 09:19:15',0,0,0),(8,'test',1,'good','2014-01-07 09:38:04','2014-01-07 09:38:04',0,0,0),(9,'godo',0,'问题','2014-01-24 08:29:44','2014-01-24 08:29:44',0,0,0),(10,'good',2,'gob','2014-02-23 07:22:34','2014-02-23 07:22:34',0,0,0),(11,'',2,'','2014-02-23 08:07:04','2014-02-23 08:07:04',0,0,0),(12,'',2,'','2014-02-23 08:08:50','2014-02-23 08:08:50',0,0,0),(13,'',2,'','2014-02-23 08:09:22','2014-02-23 08:09:22',0,0,0),(14,'',2,'','2014-02-23 08:12:18','2014-02-23 08:12:18',0,0,0),(15,'',2,'','2014-02-23 08:13:24','2014-02-23 08:13:24',0,0,0),(16,'good',2,'test','2014-02-25 12:01:29','2014-02-25 12:01:29',NULL,NULL,NULL),(17,'now',2,'good question','2014-02-27 02:50:33','2014-02-27 02:50:33',NULL,NULL,NULL),(18,'good',2,'test','2014-02-27 03:07:23','2014-02-27 03:07:23',NULL,NULL,NULL),(19,'test',2,'too','2014-02-27 03:09:05','2014-02-27 03:09:05',NULL,NULL,NULL),(20,'good',2,'gd','2014-02-27 03:16:04','2014-02-27 03:16:04',NULL,NULL,NULL),(21,'good',2,'gd','2014-02-27 03:16:50','2014-02-27 03:16:50',NULL,NULL,NULL),(22,'good',2,'gd','2014-02-27 03:17:15','2014-02-27 03:17:15',NULL,NULL,NULL),(23,'good',2,'gd','2014-02-27 03:17:38','2014-02-27 03:17:38',NULL,NULL,NULL),(24,'test',2,'test','2014-02-27 03:22:36','2014-02-27 03:22:36',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,4 +82,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-20 20:20:27
+-- Dump completed on 2014-02-27 11:31:02

@@ -48,17 +48,16 @@ sub startup {
 
   # Normal route to controller
   # main nav links
-  $r->get('/')->name('home')->to('question#front');
-  $r->get('/tags')->name('tags')->to('tag#all');
-  $r->get('/users')->name('users')->to('user#all');
-  $r->get('/badges')->name('badges')->to('badge#all');
-
-  $r->get('/ask')->name('questionask')->to('question#ask');
-  $r->post('/question/save')->name('questionsave')->to('question#save');
+  $r->get('/')              ->to('question#front')  ->name('home');
+  $r->get('/tags')          ->to('tag#all')         ->name('tags');
+  $r->get('/users')         ->to('user#all')        ->name('users');
+  $r->get('/badges')        ->to('badge#all')       ->name('badges');
+  $r->get('/ask')           ->to('question#ask')    ->name('questionask');
+  $r->post('/question/save')->to('question#save')   ->name('questionsave');
 
   #显示问题，by id
-  $r->get('/question/:id' => [ id => qr/\d+$/ ])->name('questionview')->to('question#view');
-  $r->get('/q/:id' => [ id => qr/\d+$/ ])->name('qview')->to('question#view');
+  $r->get('/question/:id' => [ id => qr/\d+$/ ])->to('question#view')->name('questionview');
+  $r->get('/q/:id' => [ id => qr/\d+$/ ])->to('question#view')->name('qview');
 
   # $r->get('/question/:name' => [ id => qr/\d+$/ ])->to('question#view'); #考虑要不要加这个
 
@@ -76,8 +75,8 @@ sub startup {
 
   $r->get('/admin/init')->to('admin#init');
 
-  $r->get('/error/404')->name('notfound')->to('admin#error404');
-  $r->get('/error/403')->name('notallowed')->to('admin#error403');
+  $r->get('/error/404')->to('admin#error404')->name('notfound');
+  $r->get('/error/403')->to('admin#error403')->name('notallowed');
 }
 
 1;

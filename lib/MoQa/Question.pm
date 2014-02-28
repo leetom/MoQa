@@ -51,7 +51,7 @@ sub save {
         my @tags = split /,|\s/, $tag;
         @tags = @{unique(\@tags)};
         for my $t (@tags){
-            push @Tags, MoQa::Tag->new($t);
+            push @Tags, MoQa::Tag->add($t);
         }
     }
 

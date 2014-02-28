@@ -1,0 +1,1 @@
+checkout 服务器上一个文件: git checkout HEAD -- main.c

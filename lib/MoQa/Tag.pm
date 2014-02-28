@@ -4,7 +4,8 @@ use Data::Printer;
 
 my $DB = $MoQa::DB;
 
-sub new {
+# 不能用new, new应该继承来，否则会出问题(stash等)
+sub add {
     my ($self, $name) = @_;
 
     my $sth = $DB->prepare("SELECT * FROM `tag` WHERE name=?");
@@ -22,6 +23,18 @@ sub new {
         return bless { name => $name, id => $DB->last_insert_id(undef, undef, undef, undef)};
     }
 
+}
+
+sub all {
+    my $self = shift;
+
+    my $sth = $DB->prepare("SELECT * FROM `tag` LIMIT 50");
+
+    my $tags = $DB->selectall_arrayref($sth, { Slice => {} });
+
+    $self->stash(tags => $tags);
+
+    $self->render();
 }
 
 

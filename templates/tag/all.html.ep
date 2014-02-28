@@ -1,0 +1,4 @@
+% layout "sf";
+% title "All Tags";
+
+%= dumper $tags

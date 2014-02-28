@@ -1,2 +1,4 @@
 checkout 服务器上一个文件: git checkout HEAD -- main.c
 用https链接 clone的话，每次push都得输入用户名密码
+用ssh登录,则不用输入用户名密码,不过要将public key 添加到github的允许列表. ~/.ssh/id_rsa.pub
+git remote set-url origin git@github.com:leetom/MoQa.git

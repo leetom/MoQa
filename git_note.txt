@@ -1,1 +1,2 @@
 checkout 服务器上一个文件: git checkout HEAD -- main.c
+用https链接 clone的话，每次push都得输入用户名密码

@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+#
+# OK, this file can be deleted
 
 
 open (FILE, '>', 'image.bmp'); 

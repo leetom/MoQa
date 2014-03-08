@@ -10,6 +10,9 @@ use MoQa::Schema;
 
 my $force_overwrite = 0;
 
+# first, we have to create the database
+# CREATE SCHEMA `moqa` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+
 unless ( GetOptions( 'force_overwrite=i' => \$force_overwrite ) ) {
     die "Invalid options";
 }

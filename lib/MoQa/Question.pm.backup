@@ -3,9 +3,10 @@ use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(url_escape url_unescape html_unescape);
 use Data::Printer;
 use MoQa::Tag;
-use Data::Dumper;
 #use DateTime;
 
+
+my $DB = $MoQa::DB;
 
 sub unique {
     my $arf = shift;
@@ -54,16 +55,16 @@ sub save {
         }
     }
 
-    # $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW(), 0, 0, 0);", undef, $title, $uid, $content) or die $DB::errstr;
-    # my $qid = $DB->last_insert_id(undef, undef, undef, undef);
+    $DB->do("INSERT INTO question VALUES(NULL, ?, ?, ?, NOW(), NOW(), 0, 0, 0);", undef, $title, $uid, $content) or die $DB::errstr;
+    my $qid = $DB->last_insert_id(undef, undef, undef, undef);
 
     # relate question to all tags
-    #  my $sth = $DB->prepare("INSERT INTO `tagged` VALUES(NULL, ?, ?)");
+    my $sth = $DB->prepare("INSERT INTO `tagged` VALUES(NULL, ?, ?)");
     for my $tag(@Tags){
-        # $sth->execute($qid, $tag->{id});
+       $sth->execute($qid, $tag->{id});
     }
 
-    # $self->redirect_to('questionview', id => $qid);
+    $self->redirect_to('questionview', id => $qid);
 }
 
 sub view {
@@ -71,9 +72,16 @@ sub view {
 
     my $id = $self->param('id');;
 
-    # $self->redirect_to('notfound') unless $question;
+    $DB->do("UPDATE `question` SET viewed = viewed+1 WHERE id=?", undef, $id) or warn "viewed更新失败: ". $DB::errstr;
 
-    # $self->stash(question => $question);
+    my $sth = $DB->prepare("SELECT q.*, u.name FROM `question` q LEFT JOIN `user` u ON q.uid=u.id WHERE q.id=?");
+    $sth->execute($id);
+
+    my $question = $sth->fetchrow_hashref;
+
+    $self->redirect_to('notfound') unless $question;
+
+    $self->stash(question => $question);
 
     $self->render();
 
@@ -94,30 +102,17 @@ sub front {
     my $self = shift;
     # my $sth = $DB->prepare("SELECT q.*, u.name from question q, user u where q.uid = u.id limit 20");
     # my $sth = $DB->prepare("SELECT q.*, UNIX_TIMESTAMP(q.created) stamp, u.name from question q LEFT JOIN user u ON q.uid = u.id ORDER BY id desc limit 20"); #UNIX_TIMESTAM 将mysql的日期时间格式改成UNIX_TIMESTAM的形式
-    #
-    my $rs = $self->db->resultset('Question')->search(
-        undef,
-        {
-            page => 1,
-            rows => 20,
-        });
-
-    my @questions = $rs->all;
-
-    p $questions[0]->created;
+    my $sth = $DB->prepare("SELECT q.*, u.name from question q LEFT JOIN user u ON q.uid = u.id ORDER BY id desc limit 20");
+    my $questions = $DB->selectall_arrayref($sth, { Slice => {} });
 
 
-    $self->render(questions =>  \@questions);
-
-
-=head1
     $self->res->headers->add("Power" => "MoQa");
     $self->res->headers->add("Content-type" => "text/html;Charset=utf-8");
     
     # $self->readable_time($questions->[0]->{created});
     $self->stash(questions => $questions);
-=cut
 
+    $self->render();
 }
 
 

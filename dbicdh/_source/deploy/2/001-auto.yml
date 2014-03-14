@@ -1,0 +1,517 @@
+---
+schema:
+  procedures: {}
+  tables:
+    answer:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+      fields:
+        content:
+          data_type: text
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: content
+          order: 4
+          size:
+            - 0
+        created:
+          data_type: timestamp
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: created
+          order: 5
+          size:
+            - 0
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        qid:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: qid
+          order: 3
+          size:
+            - 0
+        uid:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: uid
+          order: 2
+          size:
+            - 0
+        updated:
+          data_type: timestamp
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: updated
+          order: 6
+          size:
+            - 0
+        vote_down:
+          data_type: integer
+          default_value: 0
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: vote_down
+          order: 8
+          size:
+            - 0
+        vote_up:
+          data_type: integer
+          default_value: 0
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: vote_up
+          order: 7
+          size:
+            - 0
+      indices: []
+      name: answer
+      options: []
+      order: 1
+    question:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+      fields:
+        best_answer:
+          data_type: integer
+          default_value: 0
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: best_answer
+          order: 10
+          size:
+            - 0
+        content:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: content
+          order: 4
+          size:
+            - 0
+        created:
+          data_type: timestamp
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: created
+          order: 5
+          size:
+            - 0
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        title:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: title
+          order: 2
+          size:
+            - 255
+        uid:
+          data_type: integer
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: uid
+          order: 3
+          size:
+            - 0
+        updated:
+          data_type: timestamp
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: updated
+          order: 6
+          size:
+            - 0
+        viewed:
+          data_type: integer
+          default_value: 0
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: viewed
+          order: 7
+          size:
+            - 0
+        vote_down:
+          data_type: integer
+          default_value: 0
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: vote_down
+          order: 9
+          size:
+            - 0
+        vote_up:
+          data_type: integer
+          default_value: 0
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: vote_up
+          order: 8
+          size:
+            - 0
+      indices: []
+      name: question
+      options: []
+      order: 2
+    role:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+      fields:
+        description:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: description
+          order: 3
+          size:
+            - 0
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        name:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: name
+          order: 2
+          size:
+            - 45
+        perm:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: perm
+          order: 4
+          size:
+            - 0
+      indices: []
+      name: role
+      options: []
+      order: 3
+    tag:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - name
+          match_type: ''
+          name: tag_UNIQUE
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+      fields:
+        description:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: description
+          order: 3
+          size:
+            - 0
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        name:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: name
+          order: 2
+          size:
+            - 45
+        related:
+          data_type: integer
+          default_value: 0
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: related
+          order: 4
+          size:
+            - 0
+      indices: []
+      name: tag
+      options: []
+      order: 4
+    tagged:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+      fields:
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        qid:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: qid
+          order: 2
+          size:
+            - 0
+        tid:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: tid
+          order: 3
+          size:
+            - 0
+      indices: []
+      name: tagged
+      options: []
+      order: 5
+    user:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+      fields:
+        created:
+          data_type: timestamp
+          default_value: !!perl/ref
+            =: current_timestamp
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: created
+          order: 5
+          size:
+            - 0
+        email:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: email
+          order: 4
+          size:
+            - 255
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        last_login:
+          data_type: timestamp
+          default_value: 0000-00-00 00:00:00
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: last_login
+          order: 6
+          size:
+            - 0
+        name:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: name
+          order: 2
+          size:
+            - 255
+        pass:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: pass
+          order: 3
+          size:
+            - 255
+        score:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: score
+          order: 7
+          size:
+            - 0
+      indices: []
+      name: user
+      options: []
+      order: 6
+  triggers: {}
+  views: {}
+translator:
+  add_drop_table: 0
+  filename: ~
+  no_comments: 0
+  parser_args:
+    sources:
+      - Question
+      - Role
+      - Tag
+      - User
+      - Tagged
+      - Answer
+  parser_type: SQL::Translator::Parser::DBIx::Class
+  producer_args: {}
+  producer_type: SQL::Translator::Producer::YAML
+  show_warnings: 0
+  trace: 0
+  version: 0.11016

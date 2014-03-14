@@ -27,17 +27,30 @@ body{
     height:35px;
     background:#323a37;
 }
-.nav-bar a{
-    color:white;
-    text-decoration:none;
-    line-height:35px;
-    font-size:18px;
-    margin-right:10px;
-    &:hover{
-        border-bottom:2px solid #008460;
+.nav-bar{
+    a{
+        color:white;
+        text-decoration:none;
+        line-height:35px;
+        font-size:18px;
+        margin-right:10px;
+        &:hover{
+            border-bottom:2px solid #008460;
+        }
+        &.active{
+            border-bottom:2px solid #008460;
+        }
     }
-    &.active{
-        border-bottom:2px solid #008460;
+    .main-menu{
+        @include inlineblock(70%);
+    }
+    .user-menu{
+        @include inlineblock(20%);
+        float:right;
+        text-align:right;
+        a{
+            font-size:14px;
+        }
     }
 }
 .content{

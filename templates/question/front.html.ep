@@ -5,14 +5,14 @@
     <header>最新问题</header>
 
 % for my $question (@$questions){
-    % my $id = $question->{id};
+    % my $id = $question->id;
     <div class="question">
         <div class="question-action">顶踩</div>
         <div class="question-body">
-            <div><%= $question->{title} %></div>
+            <div><%= $question->title %></div>
             <div>
-                <span class="author"><%= $question->{name} %> </span>
-                <span class="created-time">created: <span class="origin-time" href="#" title="<%= $question->{created} %>"><%= readable_time $question->{created} %></span></span>
+                <span class="author"><%= $question->uid %> </span>
+                <span class="created-time">created: <span class="origin-time" href="#" title="<%= $question->created %>"><%=  $question->created %></span></span>
             </div>
         </div>
     </div>

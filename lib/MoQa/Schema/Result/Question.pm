@@ -116,6 +116,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 1 },
   "vote_down",
   { data_type => "integer", default_value => 0, is_nullable => 1 },
+  "best_answer",
+  { data_type => "integer", default_value => 0, is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY

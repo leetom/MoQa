@@ -2,22 +2,24 @@ package MoQa;
 
 use Mojo::Base 'Mojolicious';
 use DBI;
+use MoQa::Schema;
 
 # This method will run once at server start
 #
 #connect to db
 #
 my $pass = `mypass`;
-our $DB = DBI->connect("DBI:mysql:database=moqa;host=localhost", "root", $pass, 
-    {'RaiseError' => 1, mysql_enable_utf8 => 1,}
-);
-
-$DB->do("SET CHARSET 'UTF8'");
-$DB->do("SET NAMES 'UTF8'");
+has schema => sub{
+    return MoQa::Schema->connect("DBI:mysql:database=moqa;host=localhost", "root", $pass, 
+        {'RaiseError' => 1, mysql_enable_utf8 => 1,}
+    );
+};
 
 
 sub startup {
   my $self = shift;
+
+  $self->secret("this i s an new phase of secretegosadfLKDJF");
 
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer');
@@ -43,6 +45,8 @@ sub startup {
   #时间插件(自己写的)
   $self->plugin('ReadableTime', {timezone => 'Asia/Shanghai', lang => 'cn'});
 
+  $self->helper(db => sub{ $self->app->schema});
+
   # Router
   my $r = $self->routes;
 
@@ -63,14 +67,16 @@ sub startup {
 
   $r->get('/user')->to('user#page'); # user's personal page
 
-  $r->get('/user/login')->to('user#login');
+  $r->get('/user/login')->to('user#login')->name('login');
   $r->post('/user/login')->to('user#check');
 
-  $r->get('/user/reg')->to('user#reg');
+  $r->get('/user/reg')->to('user#reg')->name('reg');
   $r->post('/user/reg')->to('user#save');
   $r->get('/user/captcha')->to('user#captcha');
 
   $r->get('/user/logout')->to('user#logout');
+
+  $r->get('/search')->to('action#search')->name('search');
 
 
   $r->get('/admin/init')->to('admin#init');

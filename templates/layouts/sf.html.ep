@@ -4,19 +4,40 @@
   <header>
       <div class="nav-bar-wrapper wrapper">
             % my @links = qw(home tags users badges);
-            <nav class="nav-bar container">
-                % for my $link (@links){
-                    % if(current_route $link){
-                        <a href="<%= url_for $link %>" class="active">
-                            <%= ucfirst $link %>
-                        </a>
-                    % }else{
-                        <a href="<%= url_for $link %>">
-                            <%= ucfirst $link %>
-                        </a>
+            <div class="nav-bar container">
+                <nav class="main-menu">
+                    % for my $link (@links){
+                        % if(current_route $link){
+                            <a href="<%= url_for $link %>" class="active">
+                                <%= ucfirst $link %>
+                            </a>
+                        % }else{
+                            <a href="<%= url_for $link %>">
+                                <%= ucfirst $link %>
+                            </a>
+                        % }
                     % }
+                </nav>
+                <nav class="user-menu">
+                % if (session 'user') {
+                    <a href="<%= url_for 'userpage' %>">消息</a>
+                    <a href="<%= url_for 'userpage' %>"><%= session('user')->{name} %></a>
+                % }else{
+                    <a href="<%= url_for 'login' %>">登录</a>
+                    <a href="<%= url_for 'reg' %>">注册</a>
                 % }
-            </nav>
+                </nav>
+            </div>
+      </div>
+      <div class="main-bar container">
+        <h1>MoQa 问答系统</h1>
+        <div class="search">
+            %= form_for "search" => begin
+                %= text_field "search", placeholder => "输入内容进行搜索"
+                %= csrf_field
+                %= submit_button "搜索"
+            % end
+        </div>
       </div>
   </header>
 % end
